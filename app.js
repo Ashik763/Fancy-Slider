@@ -1,3 +1,8 @@
+//Please don't evaluate this now,,I need to fix something 
+
+
+
+
 const imagesArea = document.querySelector('.images');
 const gallery = document.querySelector('.gallery');
 const galleryHeader = document.querySelector('.gallery-header');
@@ -136,3 +141,4 @@ sliderBtn.addEventListener('click', function () {
 // sliderBtn.addEventListener('click', function () {
 //   createSlider();
 // })
+const toggleImage
