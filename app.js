@@ -1,4 +1,4 @@
-//Please don't evaluate this now,,I need to fix something 
+
 
 
 
@@ -13,6 +13,8 @@ const sliderContainer = document.getElementById('sliders');
 let sliders = [];
 
 
+
+
 // If this key doesn't work
 // Find the name in the url and go to their website
 // to create your own api key
@@ -20,17 +22,18 @@ const KEY = '15674931-a9d714b6e9d654524df198e00&q';
 
 // show images 
 const showImages = (images) => {
- 
+
   imagesArea.style.display = 'block';
   gallery.innerHTML = '';
   // show gallery title
   galleryHeader.style.display = 'flex';
-  // console.log(images.hits);
+  
   images.hits.forEach(image => {
-    
+
     let div = document.createElement('div');
     div.className = 'col-lg-3 col-md-4 col-xs-6 img-item mb-2';
-    div.innerHTML = ` <img class="img-fluid img-thumbnail" onclick=selectItem(event,"${image.webformatURL}") src="${image.webformatURL}" alt="${image.tags}">`;
+    
+    div.innerHTML = ` <img id="img" class="img-fluid img-thumbnail" onclick=selectItem(event,"${image.webformatURL}") src="${image.webformatURL}" alt="${image.tags}">`;
     gallery.appendChild(div)
 
     toggleSpinner(false);
@@ -38,16 +41,17 @@ const showImages = (images) => {
 
 }
 
+
+
 const getImages = (query) => {
   toggleSpinner(true)
   fetch(`https://pixabay.com/api/?key=${KEY}=${query}&image_type=photo&pretty=true`)
-    
-  
+
+
     .then(response => response.json())
     .then(data => showImages(data))
-   
-    // .then(data => showImages(data.hitS))
-   
+    
+
     .catch(err => console.log(err))
 }
 
@@ -55,29 +59,27 @@ let slideIndex = 0;
 const selectItem = (event, img) => {
   let element = event.target;
   element.classList.add('added');
- 
+
   let item = sliders.indexOf(img);
   if (item === -1) {
     sliders.push(img);
-  // } else {
-  //   alert('Hey, Already added !')
-  // }
+    
   } else {
-    // alert('Hey, Already added !')
+   
     element.classList.remove('added');
     sliders.pop(img);
   }
 }
 var timer
-// const createSlider = () => {
+
 const createSlider = () => {
-  // console.log(sliders);
+  
   // check slider image length
   if (sliders.length < 2) {
     alert('Select at least 2 image.')
     return;
   }
-  // else
+  
   // crate slider previous next area
   sliderContainer.innerHTML = '';
   const prevNext = document.createElement('div');
@@ -86,21 +88,23 @@ const createSlider = () => {
   <span class="prev" onclick="changeItem(-1)"><i class="fas fa-chevron-left"></i></span>
   <span class="next" onclick="changeItem(1)"><i class="fas fa-chevron-right"></i></span>
   `;
- 
- 
+
+
 
   sliderContainer.appendChild(prevNext)
   document.querySelector('.main').style.display = 'block';
   // hide image aria
   imagesArea.style.display = 'none';
- 
-  let duration =  document.getElementById('duration').value || 3000;
+
+  let duration = document.getElementById('duration').value || 3000;
   //if(duration >0){
   //   duration = document.getElementById('duration').value;
   // } 
-  if(duration < 0){
+  if (duration < 0) {
+
     alert('please put duration bigger than zero')
-    duration =  50000;
+
+    duration = 50000;
   }
   // let duration = document.getElementById('duration').value || 3000 ;
   sliders.forEach(slide => {
@@ -154,25 +158,33 @@ searchBtn.addEventListener('click', function () {
 
 sliderBtn.addEventListener('click', function () {
   createSlider();
-  console.log(sliders);
+  console.log(sliders[0]);
 })
 
 
-                  // BONUS -1 LOADING SPINNER 
+// BONUS -1 LOADING SPINNER 
 
 document.getElementById("search")
-    .addEventListener("keypress",function(event){
-      if(event.key == 'Enter'){
-        document.getElementById("search-btn").click();
-      }
-    })
-
-    const toggleSpinner = (show) =>{
-      const spinner = document.getElementById('loading-spinner');
-      if (show){
-        spinner.classList.remove('d-none');
-      }
-      else{
-        spinner.classList.add('d-none');
-      }
+  .addEventListener("keypress", function (event) {
+    if (event.key == 'Enter') {
+      document.getElementById("search-btn").click();
     }
+  })
+
+const toggleSpinner = (show) => {
+  const spinner = document.getElementById('loading-spinner');
+  if (show) {
+    spinner.classList.remove('d-none');
+  }
+  else {
+    spinner.classList.add('d-none');
+  }
+}
+
+// document.getElementById("search-btn").onmouseover = function () {mouseOver()};
+
+// function mouseOver() {
+//   document.getElementById("search-btn").style.backgroundColor = "red";
+// }
+
+
