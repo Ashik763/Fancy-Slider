@@ -29,6 +29,12 @@
 img {
   height: 400px;
   object-fit: cover;
+  transition: 1s;
+}
+        /* BONUS PART=2 */
+img:hover{
+  background-color:rgba(109, 108, 108,.5);
+  transform:scale(1.1) ;
 }
 
 .prev-next {

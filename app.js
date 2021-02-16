@@ -37,6 +37,18 @@ const showImages = (images) => {
     gallery.appendChild(div)
 
     toggleSpinner(false);
+
+
+//     document.getElementsByClassName("img-thumbnail").addEventListener("mouseover", mouseOver);
+// document.getElementById("img-thumbnail").addEventListener("mouseout", mouseOut);
+
+// function mouseOver() {
+//   document.getElementById("img-thumbnail").style.backgroundColor = "red";
+// }
+
+// function mouseOut() {
+//   document.getElementById("img-thumbnail").style.backgroundColor = "black";
+// }
   })
 
 }
