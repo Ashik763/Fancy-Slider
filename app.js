@@ -193,10 +193,6 @@ const toggleSpinner = (show) => {
   }
 }
 
-// document.getElementById("search-btn").onmouseover = function () {mouseOver()};
 
-// function mouseOver() {
-//   document.getElementById("search-btn").style.backgroundColor = "red";
-// }
 
 
